@@ -9,7 +9,7 @@ comments: true
 
 ###1. 安装rabbitmq
 
-```shell
+```
 brew update
 brew install rabbitmq
 ```
@@ -18,7 +18,7 @@ brew install rabbitmq
 
 修改~/.bash_profile或~/.zshrc文件，添加以下内容：
 
-```shell
+```
 # RabbitMQ Config
 export PATH=$PATH:/usr/local/sbin
 ```
@@ -29,7 +29,7 @@ export PATH=$PATH:/usr/local/sbin
 
 使用pip命令安装即可
 
-```shell
+```
 pip install django-celery
 ```
 
@@ -80,19 +80,19 @@ def add(x, y):
 
 启动rabbitmq
 
-```shell
+```
 sudo rabbitmq-server
 ```
 
 启动woker
 
-```shell
+```
 python manage.py celeryd -l info
 ```
 
 启动后另启一个终端，运行以下命令:
 
-```shell
+```
 python manage.py shell
 
 from hello.tasks import add
