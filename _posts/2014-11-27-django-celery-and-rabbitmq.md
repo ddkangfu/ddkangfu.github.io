@@ -1,7 +1,7 @@
 ---
 layout: default
 title: django-celery 与 rabbitmq 配置简要说明
-category: 开发
+category: 工具
 comments: true
 ---
 
