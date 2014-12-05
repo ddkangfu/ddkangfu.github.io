@@ -1,21 +1,44 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset='utf-8'>
-        <title>{{ page.title }}</title>
-    </head>
-    <body>
+
+  <head>
+    <meta charset=utf-8 />
+    <title>
+      {% if page.title %} {{ page.title }} | {% endif %} ddkangfu
+    </title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+
+  <body>
+    <div id="main">
+      <header>
+        <h1>
+          一叶障目
+        </h1>
         <header>
-        </header>
+          <nav role="navigation">
+            <ul>
+              <li>
+                <a href="/"> Home </a>
+              </li>
+              <li>
+                <a href="/portfolio/"> Portfolio </a>
+              </li>
+              <li>
+                <a href="/about"> About </a>
+              </li>
+              <li>
+                <a href="/contact"> Contact </a>
+              </li>
+            </ul>
+          </nav>
+          {{ content }}
+          <footer>
+            <p>
+              @copy; ddkanfu 2013 | All Rights Reserved.
+            </p>
+          </footer>
+    </div>
+  </body>
 
-        <aside>
-        </aside>
-
-        <article>
-        {{ content }}
-        </article>
-
-        <footer>
-        </footer>
-    </body>
 </html>
