@@ -1,44 +1,49 @@
 <!DOCTYPE html>
 <html>
-
   <head>
-    <meta charset=utf-8 />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>
       {% if page.title %} {{ page.title }} | {% endif %} ddkangfu
     </title>
-    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://dn-cafe.qbox.me/assets/main.css">
   </head>
-
   <body>
-    <div id="main">
-      <header>
-        <h1>
-          一叶障目
-        </h1>
-        <header>
-          <nav role="navigation">
-            <ul>
-              <li>
-                <a href="/"> Home </a>
-              </li>
-              <li>
-                <a href="/portfolio/"> Portfolio </a>
-              </li>
-              <li>
-                <a href="/about"> About </a>
-              </li>
-              <li>
-                <a href="/contact"> Contact </a>
-              </li>
-            </ul>
-          </nav>
-          {{ content }}
-          <footer>
-            <p>
-              @copy; ddkanfu 2013 | All Rights Reserved.
-            </p>
-          </footer>
+    <header class="navbar navbar-light" role="banner" id="top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a href="./" class="navbar-brand font-logo">一叶障目</a>
+        </div>
+        <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
+          <ul class="nav navbar-nav">
+            <li><a href="#">分类</a> </li>
+            <li><a href="#">标签库</a> </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a target="_self" role="button" href="dashboard.php">
+                <span class="user-gravatar">
+                  <img src="/static/image/my.jpg" width="64px" height="64px" />
+                </span>
+                <!--<span class="user-name-text">ddkangfu</span>-->
+              </a>
+            </li>
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">Twitter</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div class="container-fluid dashboard-content">
+    {{ content }}
     </div>
+    <footer class="footer">
+      <div class="container-fluid">
+        <div class="pull-right" style="font-size:10px;"><strong>ddkangfu &copy; 2014</strong>&nbsp;&nbsp;•&nbsp;&nbsp;Ver.0.0.1「Alpha」&nbsp;&nbsp; &nbsp;&nbsp;<br>All Rights Reserved.</div>
+      </div>
+    </footer>
+    <script src="https://dn-cafe.qbox.me/assets/jquery.min.js"></script>
+    <script src="https://dn-cafe.qbox.me/assets/bootstrap.min.js"></script>
+    <script src="https://dn-cafe.qbox.me/assets/bootstrap-hover-dropdown.js"></script>
   </body>
-
 </html>
