@@ -11,4 +11,8 @@ comments: true
 
 #### 1. 第一步是使用OAuth2的授权接口获得用户的OpenID，在这步时:
 
-* 需要先判断请求页面链接是否有code参数，如果没有该参数，需要重定向到https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8888888888888888&redirect_uri=http://www.fangbei.org/wxpay/js_api_call.php&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect
+* 需要先判断请求页面链接是否有code参数，如果没有该参数，需要重定向到:
+
+```
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8888888888888888&redirect_uri=http://www.fangbei.org/wxpay/js_api_call.php&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect
+```
