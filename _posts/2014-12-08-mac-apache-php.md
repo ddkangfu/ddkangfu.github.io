@@ -1,7 +1,9 @@
+---
 layout: default
 title: Mac中的PHP环境
 category: 工具
 comments: true
+---
 
 # Mac中的PHP环境
 
