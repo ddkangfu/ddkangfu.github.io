@@ -16,4 +16,4 @@ git gc --prune=now
 git gc --aggressive --prune=now
 ```
 
-原文地址：<http://yihui.name/cn/2010/12/animation-update-1-1-5/， https://help.github.com/articles/remove-sensitive-data>
+[原文地址](http://yihui.name/cn/2010/12/animation-update-1-1-5/， https://help.github.com/articles/remove-sensitive-data)
