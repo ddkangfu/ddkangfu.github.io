@@ -5,7 +5,7 @@ category: 开发
 comments: true
 ---
 
-#彻底删除仓库中的无效文件
+# [转]彻底删除仓库中的无效文件
 
 ```
 git filter-branch --index-filter 'git rm -r --cached --ignore-unmatch path/to/your/file' HEAD
@@ -15,3 +15,5 @@ git reflog expire --expire=now --all
 git gc --prune=now
 git gc --aggressive --prune=now
 ```
+
+原文地址：http://yihui.name/cn/2010/12/animation-update-1-1-5/， https://help.github.com/articles/remove-sensitive-data
