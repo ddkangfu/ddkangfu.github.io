@@ -27,3 +27,13 @@ comments: true
 
 [https://www.dlitz.net/software/pycrypto/](https://www.dlitz.net/software/pycrypto/)
 
+* Django数据测试工具--factory_boy
+
+[https://github.com/dnerdy/factory_boy](https://github.com/dnerdy/factory_boy)
+
+* Django调试工具
+
+[https://github.com/django-debug-toolbar/django-debug-toolbar](https://github.com/django-debug-toolbar/django-debug-toolbar)
+
+* South对Django进行数据库集成功能扩展的工具
+[http://bitbucket.org/andrewgodwin/south](http://bitbucket.org/andrewgodwin/south)
