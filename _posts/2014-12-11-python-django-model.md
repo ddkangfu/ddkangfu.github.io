@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Python django常用模块
+title: Python django常用模块收集
 category: 开发
 comments: true
 ---
 
-# Python django常用模块
+# Python django常用模块收集
 
 * dateutil日期计算模块
 
