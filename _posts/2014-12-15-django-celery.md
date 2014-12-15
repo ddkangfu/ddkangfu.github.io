@@ -101,3 +101,28 @@ def mul(x, y):
 def xsum(numbers):
     return sum(numbers)
 ```
+
+6. 运行RabbitMQ:
+
+```
+sudo rabbitmq-server
+```
+
+7. 运行Worker:
+
+```
+celery -A _celery worker -l info
+```
+
+8、在shell中调用：
+
+```
+python maange.py shell
+
+>> from main.tasks import add, mul, xsum
+>> result = add.delay(2, 2)
+>> result.get()
+>> 4
+```
+
+至此整个系统可以正常运行。
