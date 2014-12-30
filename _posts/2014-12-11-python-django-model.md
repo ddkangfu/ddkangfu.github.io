@@ -37,3 +37,23 @@ comments: true
 
 * South对Django进行数据库集成功能扩展的工具
 [http://bitbucket.org/andrewgodwin/south](http://bitbucket.org/andrewgodwin/south)
+
+
+------------------2012-12-30 新增加model------------------
+
+新增了几个django相关的前台组件
+
+Django bootstrap form Bootstrap风格的表单组件
+[https://django-bootstrap-form.readthedocs.org/en/latest/](https://django-bootstrap-form.readthedocs.org/en/latest/)
+
+django-bootstrap3 Bootstrap风格的页面组件
+[http://django-bootstrap3.readthedocs.org/en/latest/](https://django-bootstrap-form.readthedocs.org/en/latest/)
+
+django-filter 查询过滤组件
+[https://django-filter.readthedocs.org/en/latest/ref/filters.html](https://django-bootstrap-form.readthedocs.org/en/latest/)
+
+django-bootstrap-pagination Bootstrap风格的分页组件
+[https://github.com/jmcclell/django-bootstrap-pagination](https://django-bootstrap-form.readthedocs.org/en/latest/)
+
+factory_boy 数据自动生成组件，主要用于生成单元测试数据
+[http://factoryboy.readthedocs.org/en/latest/](https://django-bootstrap-form.readthedocs.org/en/latest/)
