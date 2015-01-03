@@ -11,6 +11,23 @@ comments: true
 
 `git checkout`命令，当被操作的对象不是一个分支而是一个commit的时候就会处于“分离头指针”状态。具体的定义就是HEAD头指针指向了一个具体的ID而不是一个引用（分支）。
 
+当使用`git checkout HEAD^`检出当前提交的父提交时，会得到如下的提示：
+
+```
+Note: checking out 'HEAD^'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b new_branch_name
+
+HEAD is now at c6de227... 增加了2015-01-01的文章。
+```
+
 当使用checkout命令切换到其它分支时，“分离头指针”状态下修改的内容都会丢失。但可以使用-b参数为所做的修改新建一个分支。
 
 checkout有三种用法
