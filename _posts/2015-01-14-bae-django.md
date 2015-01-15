@@ -50,6 +50,23 @@ handlers:
 
 其中`url : /static/(.*)`一定要配置在`url : /.*`之前，优先处理对静态文件的请求，不符合静态文件的请求url才会被分配给index.py处理。
 
-另外`script : /static/$1`一定要和自己目录下的静态文件路径一致，否则也会找不到静态文件的。
+另外`script : /static/$1`一定要和自己目录下的静态文件路径一致，否则也会找不到静态文件的，这需要在settings.py文件中进行配置：
+
+```
+......
+SITE_ROOT = os.path.dirname(os.path.abspath(__file__))
+SITE_ROOT = os.path.abspath(os.path.join(SITE_ROOT, '../'))
+
+STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
+STATIC_URL = '/static/'
+```
+
+配置好后在app的static文件夹中放一个图片文件，然后运行命令收集文件：
+
+```
+python manage.py collectstatic
+```
+
+随后将程序用git/svn部署到BAE上（个人喜欢使用git部署，可以做各种尝试后再用--force参数撤消以前的提交记录，非常方便灵活），然后用链接访问一下图片测试是否能够访问成功。
 
 参考文章：[http://pyiner.com/2013/05/11/在BAE上用Django开发博客-在BAE上部署.html](http://pyiner.com/2013/05/11/在BAE上用Django开发博客-在BAE上部署.html)
