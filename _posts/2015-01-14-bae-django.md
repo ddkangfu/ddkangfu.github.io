@@ -15,6 +15,7 @@ requirements.txt文件内容：
 django==1.6.2
 ```
 
+### 配置启动文件
 
 修改完后，需要修改index.py文件，这是整个网站的入口，使用uwsgi来启动整个系统：
 
@@ -28,6 +29,8 @@ application = WSGIApplication(app)
 ```
 
 上传代码后，重新部署项目后，访问二级域名即可看到熟悉的`It worked!`的Django启动首页。
+
+### 配置静态文件
 
 后面会研究一下关于静态文件和模板文件的URL rewrite，有成果后会追记到这里。
 
@@ -68,5 +71,35 @@ python manage.py collectstatic
 ```
 
 随后将程序用git/svn部署到BAE上（个人喜欢使用git部署，可以做各种尝试后再用--force参数撤消以前的提交记录，非常方便灵活），然后用链接访问一下图片测试是否能够访问成功。
+
+### 数据库环境配置
+
+为了方便调试和在BAE上运行，可以在配置文件中分别对两种数据库环境进行配置，区分这两个环境的方法是os.environ是否包含量SERVER_SOFTWARE：
+
+```
+if 'SERVER_SOFTWARE' in os.environ:
+    from bae.core import const
+    DATABASES = {
+         'default': {
+                    'ENGINE': 'django.db.backends.mysql',
+                    'NAME': 'you_apply_database_name',
+                    'USER': const.MYSQL_USER, 
+                    'PASSWORD': const.MYSQL_PASS, 
+                    'HOST': const.MYSQL_HOST, 
+                    'PORT': const.MYSQL_PORT, 
+         }
+     }
+else:
+    DATABASES = {
+        'default': {
+                    'ENGINE': 'django.db.backends.mysql', 
+                    'NAME': 'dev',
+                    'USER': 'root',
+                    'PASSWORD': 'passwd',
+                    'HOST': 'localhost',
+                    'PORT': '3306', 
+        }
+    }
+```
 
 参考文章：[http://pyiner.com/2013/05/11/在BAE上用Django开发博客-在BAE上部署.html](http://pyiner.com/2013/05/11/在BAE上用Django开发博客-在BAE上部署.html)
