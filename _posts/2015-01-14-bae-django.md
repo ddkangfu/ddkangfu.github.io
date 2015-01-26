@@ -102,4 +102,36 @@ else:
     }
 ```
 
+### Redise设置
+
+至2015年1月26日止，BAE还提供了10万次Redise键值对的免费存储，对于Django我们可以使用它来作为后端的缓存数据库。由于Django没有提供自带的Redis缓存引擎，我们需要另外安装支持Django的Package。
+
+目前有两种Package可以选择，一个是[Django-redis](https://github.com/niwibe/django-redis),另一个是[Djang-redis-cache](https://github.com/sebleier/django-redis-cache)，我觉得django-redis-cache功能单一，且代码简单，还提供了连接缓冲池，基本满足我的需要，所以选择了它作为后端缓存的引擎，使用`pip install django-redis-cache`安装，目前的最高版本是0.13.0。
+
+根据BAE提供的数据读取样例代码，我们需要在settings.py中作如下设置：
+
+```
+BAE_API_KEY = "xxxx"
+BAE_SECRET_KEY = "xxxx"
+BAE_REDIS_DB_NAME = "xxxxx"
+
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': 'redis.duapp.com:80',
+        'OPTIONS': {
+            'DB': 1,
+            'PASSWORD': "%s-%s-%s"%(BAE_API_KEY, BAE_SECRET_KEY, BAE_REDIS_DB_NAME),
+            'PARSER_CLASS': 'redis.connection.HiredisParser',
+            'CONNECTION_POOL_CLASS': 'redis.BlockingConnectionPool',
+            'CONNECTION_POOL_CLASS_KWARGS': {
+                'max_connections': 50,
+                'timeout': 20,
+            }
+        },
+    },
+}
+```
+
+以API_KEY、API_SECRET_KEY和DB_NAME的组合作为Redis数据库的密码，redis.duapp.com:80作为数据库地址，这样就可以访问后端的缓存Redis数据库了。
 参考文章：[http://pyiner.com/2013/05/11/在BAE上用Django开发博客-在BAE上部署.html](http://pyiner.com/2013/05/11/在BAE上用Django开发博客-在BAE上部署.html)
