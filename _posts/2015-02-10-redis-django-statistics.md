@@ -30,8 +30,17 @@ pip install redis==2.10.3
 使用 `django-admin.py` 创建Django的Project,并创建一个名为main的App。
 
 ```
-django-admin.py startproject redistest
+django-admin startproject redistest
 cd redistest
-manage.py startapp main
+python manage.py startapp main
 ```
 
+### 增加登录/注销功能
+
+为了统计登录的在线用户，我们需要用户进行登录，最方便的就是使用admin系统来进行登录和注销。由于我们使用的是Django1.7.4，默认已经启用了admin，所以我们只要使用命令同步数据库即可。
+
+```
+python manage.py syncdb
+```
+
+然后启动开发服务器`python manage.py runserver`，登录一下admin后台[http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)即表示当前用户在线。
