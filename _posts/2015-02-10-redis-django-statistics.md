@@ -11,11 +11,9 @@ comments: true
 
 这回我们就使用Redis的ZSET数据类型来统计Django网站的10分钟内在线的用户数量。
 
-准备环境：
+### 安装Redis
 
-1. Django 1.6+
-2. Redis 2.4+
-3. redis-py
+本人使用的是Mac系统，直接使用`brew install redis`即可安装，其它系统请参考Redis的安装说明[http://redis.io/download](http://redis.io/download)。
 
 ### 开发环境
 
@@ -25,5 +23,15 @@ comments: true
 mkvirtualenv redis
 pip install django==1.7.4
 pip install redis==2.10.3
+```
+
+### 创建Django工程
+
+使用 `django-admin.py` 创建Django的Project,并创建一个名为main的App。
+
+```
+django-admin.py startproject redistest
+cd redistest
+manage.py startapp main
 ```
 
