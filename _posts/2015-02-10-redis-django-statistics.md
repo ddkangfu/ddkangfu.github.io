@@ -52,6 +52,8 @@ python manage.py syncdb
 ```
 import time
 
+from redis_exercises.settings import redis_con
+
 class StatisticsMiddleware(object):
     def process_request(self, request):
         if request.user.is_authenticated():
@@ -60,4 +62,23 @@ class StatisticsMiddleware(object):
 
 代码很简单，就是在拦截request请求，当用户登录的时候，将用户的用户名和当前时间写入到一个名为users.online的ZSET有序集合里，以时间为值进行从小到大的排序，如果用户再次刷新的话，会用最新访问的时间值来替换已经存在的上次访问时间（用户只存在一个记录，因为这是一个SET嘛）。当这个数据就绪后，我们就可以从视图里对最近一段时间内访问过的用户进行查询了（对ZSET进行倒序查询）。
 
+### 编写视图和URL
 
+下面来编写相应的视图来取回当前10分钟内访问过页面的用户：
+
+```
+from django.views.generic import TemplateView
+
+from redis_exercises.settings import redis_con
+
+class  MainView(TemplateView):
+    template_name = "main/main.html"
+
+    def get_context_data(self, **kwargs):
+        ctx = super(MainView, self).get_context_data(**kwargs)
+        ten_minutes_ago = time.time() - (10 * 60)
+        ctx['online_users'] = redis_con.zrangebyscore('users.online', ten_minutes_ago, '+inf')
+        return ctx
+```
+
+这里使用redis-py的zrangebyscore方法来按时间值查询10分钟内的访问用户，+inf表示正无穷。
