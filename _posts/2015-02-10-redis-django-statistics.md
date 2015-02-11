@@ -58,4 +58,6 @@ class StatisticsMiddleware(object):
             redis_con.zadd('users.online', time.time(), request.user.username)
 ```
 
-代码很简单，就是在拦截request请求，当用户登录的时候，将用户的用户名和当前时间写入到一个名为users.online的ZSET有序集合里，以时间为值进行从小到大的排序。当这个数据就绪后，我们就可以从视图里对某一时间段访问过的用户进行查询了。
+代码很简单，就是在拦截request请求，当用户登录的时候，将用户的用户名和当前时间写入到一个名为users.online的ZSET有序集合里，以时间为值进行从小到大的排序，如果用户再次刷新的话，会用最新访问的时间值来替换已经存在的上次访问时间（用户只存在一个记录，因为这是一个SET嘛）。当这个数据就绪后，我们就可以从视图里对最近一段时间内访问过的用户进行查询了（对ZSET进行倒序查询）。
+
+
