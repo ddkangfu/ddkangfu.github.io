@@ -44,3 +44,18 @@ python manage.py syncdb
 ```
 
 然后启动开发服务器`python manage.py runserver`，登录一下admin后台[http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/)即表示当前用户在线。
+
+#### 编写中间件
+
+为了在每次请求的时候都对请求数进行拦截，我们需要自己写一个middleware来对request进行处理，关于middleware的一些知识请参见Django的文档(https://docs.djangoproject.com/en/1.7/topics/http/middleware/)[https://docs.djangoproject.com/en/1.7/topics/http/middleware/]，代码参见下面：
+
+```
+import time
+
+class StatisticsMiddleware(object):
+    def process_request(self, request):
+        if request.user.is_authenticated():
+            redis_con.zadd('users.online', time.time(), request.user.username)
+```
+
+代码很简单，就是在拦截request请求，当用户登录的时候，将用户的用户名和当前时间写入到一个名为users.online的ZSET有序集合里，以时间为值进行从小到大的排序。当这个数据就绪后，我们就可以从视图里对某一时间段访问过的用户进行查询了。
