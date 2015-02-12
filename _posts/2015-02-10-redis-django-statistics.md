@@ -103,3 +103,18 @@ class  MainView(TemplateView):
 </html>
 ```
 
+### 配置url
+
+在urls中配置url映射：
+
+```
+from django.conf.urls import patterns, include, url
+from django.contrib import admin
+
+from main import views
+
+urlpatterns = patterns('',
+    url(r'^$', views.MainView.as_view(), name='home'),
+    url(r'^admin/', include(admin.site.urls)),
+)
+```
